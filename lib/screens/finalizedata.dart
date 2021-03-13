@@ -91,114 +91,112 @@ class _finalizedataState extends State<finalizedata> {
         child: Container(
           padding: EdgeInsets.all(15),
           child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
 
-                  TextField(
-                    onChanged: (String getNote){
-                      note = getNote;
-                    },
-                    maxLines: 4,
-                    decoration: new InputDecoration(
-                      border: new OutlineInputBorder(
-                          borderSide: new BorderSide(color: mainaccent)),
-                      hintText: ' 🖊 Lägg till en anteckning',
+                TextField(
+                  onChanged: (String getNote){
+                    note = getNote;
+                  },
+                  maxLines: 4,
+                  decoration: new InputDecoration(
+                    border: new OutlineInputBorder(
+                        borderSide: new BorderSide(color: mainaccent)),
+                    hintText: ' 🖊 Lägg till en anteckning',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Välj en operatör',
+                      style: TextStyleMediumBlack,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Välj en operatör',
-                        style: TextStyleMediumBlack,
+                    Container(
+                      height: 100,
+                      child: CupertinoPicker(
+                        magnification: 2,
+                        children: [
+                          for (int i = 0; i < categ_list.length; i++)
+                            Text(
+                              categ_list[i],
+                              style: TextStyleFormBlack,
+                              textAlign: TextAlign.center,
+                            ),
+                        ],
+                        itemExtent: 20,
+                        onSelectedItemChanged: (int value) {
+                          setState(() {
+                            categ = categ_list[value];
+                            print(categ);
+                          });
+                        },
                       ),
-                      Container(
-                        height: 100,
-                        child: CupertinoPicker(
-                          magnification: 2,
-                          children: [
-                            for (int i = 0; i < categ_list.length; i++)
-                              Text(
-                                categ_list[i],
-                                style: TextStyleFormBlack,
-                                textAlign: TextAlign.center,
-                              ),
-                          ],
-                          itemExtent: 20,
-                          onSelectedItemChanged: (int value) {
-                            setState(() {
-                              categ = categ_list[value];
-                              print(categ);
-                            });
-                          },
-                        ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Välj Datum och tid',
+                      style: TextStyleMediumBlack,
+                    ),
+                    Container(
+                      height: 100,
+                      child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: (DateTime newdate) {
+                          date = newdate;
+                        },
+                        minimumYear: 2010,
+                        maximumYear: 2018,
+                        minuteInterval: 1,
+                        mode: CupertinoDatePickerMode.dateAndTime,
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Välj Datum och tid',
-                        style: TextStyleMediumBlack,
-                      ),
-                      Container(
-                        height: 100,
-                        child: CupertinoDatePicker(
-                          initialDateTime: DateTime.now(),
-                          onDateTimeChanged: (DateTime newdate) {
-                            date = newdate;
-                          },
-                          minimumYear: 2010,
-                          maximumYear: 2018,
-                          minuteInterval: 1,
-                          mode: CupertinoDatePickerMode.dateAndTime,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  RoundButton(textval: 'Lägg till',height: 50,onpress: (){
-                    setState(() {
-                      if(id != null)
-                        {
-                          if(categ !=  null && note != null && date != null)
-                            {
-                              loading = true;
-                              addDataModel addmodel = new addDataModel(
-                                operationType: widget.operation,
-                                subOperationType: widget.suboperation,
-                                operator: categ,
-                                date: date.toString(),
-                                note: note,
-                              );
-                              savedata(addmodel, id);
-                            }
-                          else
-                            {
-                              Toast.show("Välj komplett formulär", context,gravity: Toast.BOTTOM,duration: 2);
-                            }
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                RoundButton(textval: 'Lägg till',height: 50,onpress: (){
+                  setState(() {
+                    if(id != null)
+                      {
+                        if(categ !=  null && note != null && date != null)
+                          {
+                            loading = true;
+                            addDataModel addmodel = new addDataModel(
+                              operationType: widget.operation,
+                              subOperationType: widget.suboperation,
+                              operator: categ,
+                              date: date.toString(),
+                              note: note,
+                            );
+                            savedata(addmodel, id);
+                          }
+                        else
+                          {
+                            Toast.show("Välj komplett formulär", context,gravity: Toast.BOTTOM,duration: 2);
+                          }
 
-                        }
-                      else
-                        {
-                          Toast.show("Inget ID närvarande för ADD med", context,gravity: Toast.BOTTOM,duration: 3);
-                        }
-                    });
-                  },)
-                ],
-              ),
+                      }
+                    else
+                      {
+                        Toast.show("Inget ID närvarande för ADD med", context,gravity: Toast.BOTTOM,duration: 3);
+                      }
+                  });
+                },)
+              ],
             ),
           ),
         ),
