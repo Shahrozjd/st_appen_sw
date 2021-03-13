@@ -101,7 +101,7 @@ class _finalizedataState extends State<finalizedata> {
                     onChanged: (String getNote){
                       note = getNote;
                     },
-                    maxLines: 8,
+                    maxLines: 4,
                     decoration: new InputDecoration(
                       border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: mainaccent)),
@@ -119,7 +119,7 @@ class _finalizedataState extends State<finalizedata> {
                         style: TextStyleMediumBlack,
                       ),
                       Container(
-                        height: 200,
+                        height: 100,
                         child: CupertinoPicker(
                           magnification: 2,
                           children: [
@@ -152,7 +152,7 @@ class _finalizedataState extends State<finalizedata> {
                         style: TextStyleMediumBlack,
                       ),
                       Container(
-                        height: 200,
+                        height: 100,
                         child: CupertinoDatePicker(
                           initialDateTime: DateTime.now(),
                           onDateTimeChanged: (DateTime newdate) {

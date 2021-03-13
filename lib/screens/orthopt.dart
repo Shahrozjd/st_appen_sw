@@ -15,24 +15,24 @@ class _orthoptState extends State<orthopt> {
   String categ;
 
   List categ_list = [
-        'Ortopedi,'
-        'Axel,'
-        'Överarm,'
-        'Armbåge,'
-        'Underarm,'
-        'Handled,'
-        'Hand,'
-        'Rygg,'
-        'Bäcken,'
-        'Höft,'
-        'Lårben,'
-        'Knä,'
-        'Underben,'
-        'Fotled,'
-        'Fot,'
-        'Barningrepp,'
-        'Barnfrakturer,'
-        'Annat,'
+        'Ortopedi',
+        'Axel',
+        'Överarm',
+        'Armbåge',
+        'Underarm',
+        'Handled',
+        'Hand',
+        'Rygg',
+        'Bäcken',
+        'Höft',
+        'Lårben',
+        'Knä',
+        'Underben',
+        'Fotled',
+        'Fot',
+        'Barningrepp',
+        'Barnfrakturer',
+        'Annat',
   ];
 
   @override
