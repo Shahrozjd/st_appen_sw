@@ -101,6 +101,7 @@ class _finalizedataState extends State<finalizedata> {
                     note = getNote;
                   },
                   maxLines: 4,
+                  keyboardType: TextInputType.text,
                   decoration: new InputDecoration(
                     border: new OutlineInputBorder(
                         borderSide: new BorderSide(color: mainaccent)),
@@ -132,6 +133,7 @@ class _finalizedataState extends State<finalizedata> {
                         itemExtent: 20,
                         onSelectedItemChanged: (int value) {
                           setState(() {
+                            FocusScope.of(context).unfocus();
                             categ = categ_list[value];
                             print(categ);
                           });

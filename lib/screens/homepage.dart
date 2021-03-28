@@ -20,14 +20,14 @@ class _homepageState extends State<homepage> with SingleTickerProviderStateMixin
   int useridkey = 101;
   String userid;
 
-  TabController _tabController;
+  // TabController _tabController;
 
 
 
   @override
   void initState() {
     userid = usersessBox.get(useridkey, defaultValue: null);
-    _tabController = new TabController(length: 2, vsync: this);
+    // _tabController = new TabController(length: 2, vsync: this);
     super.initState();
   }
 
@@ -43,26 +43,27 @@ class _homepageState extends State<homepage> with SingleTickerProviderStateMixin
           'Diagram',
           style: TextStyleHeadingBold,
         ),
-        bottom: TabBar(
-          unselectedLabelColor: mainaccent,
-          labelColor: Colors.white,
-          tabs: [
-            new Tab(icon: Text('Operation',style: TextStyleMedium,)),
-            new Tab(icon: Text('Sub Operation',style: TextStyleMedium,),),
-          ],
-          controller: _tabController,
-          indicatorColor: Colors.blue,
-          indicatorWeight: 5,
-        ),
+        // bottom: TabBar(
+        //   unselectedLabelColor: mainaccent,
+        //   labelColor: Colors.white,
+        //   tabs: [
+        //     new Tab(icon: Text('Operation',style: TextStyleMedium,)),
+        //     new Tab(icon: Text('Sub Operation',style: TextStyleMedium,),),
+        //   ],
+        //   controller: _tabController,
+        //   indicatorColor: Colors.blue,
+        //   indicatorWeight: 5,
+        // ),
         bottomOpacity: 1,
       ),
-      body: TabBarView(
-        children: [
-          Operation(),
-          subOperation(),
-        ],
-        controller: _tabController,
-      ),
+      body: Operation(),
+      // body: TabBarView(
+      //   children: [
+      //     Operation(),
+      //     subOperation(),
+      //   ],
+      //   // controller: _tabController,
+      // ),
     );
   }
 
